@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(npm install framer-motion gsap @gsap/react three react-hook-form zod @hookform/resolvers lucide-react class-variance-authority clsx tailwind-merge tw-animate-css @radix-ui/react-accordion @radix-ui/react-dropdown-menu @radix-ui/react-slot @radix-ui/react-label @radix-ui/react-navigation-menu @radix-ui/react-select)",
+      "PowerShell(npm install -D @types/three)",
+      "PowerShell(npx tsc --noEmit)",
+      "PowerShell(npm run build)"
+    ]
+  }
+}

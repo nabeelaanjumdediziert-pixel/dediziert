@@ -1,0 +1,242 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/*
+  DEDIZIERT design system — Tailwind v4 (CSS-first config).
+  Brand palette and typography are exposed as theme tokens so utilities
+  like `bg-primary`, `text-secondary`, `font-heading` are generated.
+  Light theme only (no dark variant, per product decision).
+*/
+
+/* --- Brand extras + scales (do not collide with shadcn tokens below) --- */
+@theme {
+  --color-primary-50: #eef2f8;
+  --color-primary-100: #dbe2f0;
+  --color-primary-600: #294474;
+  --color-primary-700: #243b6b;
+  --color-primary-900: #16263f;
+
+  --color-secondary-light: #7888b1;
+
+  /* Premium gold accent — used sparingly for emphasis and key numbers */
+  --color-gold: #c9a86a;
+  --color-gold-light: #e0c89a;
+  --color-gold-dark: #a8884a;
+
+  --color-light-grey: #d3d5d8;
+  --color-ink: #1f2937;
+  --color-muted-ink: #4b5563;
+  --color-surface: #ffffff;
+
+  /* Typography */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-jakarta), var(--font-inter), ui-sans-serif,
+    system-ui, sans-serif;
+
+  /* Elevation */
+  --shadow-soft: 0 1px 2px rgba(31, 41, 55, 0.04),
+    0 8px 24px rgba(36, 59, 107, 0.06);
+  --shadow-card: 0 2px 4px rgba(31, 41, 55, 0.04),
+    0 18px 40px rgba(36, 59, 107, 0.08);
+  --shadow-lift: 0 12px 28px rgba(36, 59, 107, 0.16);
+
+  /* Animations */
+  --animate-accordion-down: accordion-down 0.3s ease-out;
+  --animate-accordion-up: accordion-up 0.3s ease-out;
+  --animate-marquee: marquee 40s linear infinite;
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* --- shadcn/ui design tokens, mapped to the DEDIZIERT brand --- */
+:root {
+  --radius: 0.75rem;
+
+  --background: #f5f6f8;
+  --foreground: #1f2937;
+
+  --card: #ffffff;
+  --card-foreground: #1f2937;
+
+  --popover: #ffffff;
+  --popover-foreground: #1f2937;
+
+  --primary: #2f4d88;
+  --primary-foreground: #ffffff;
+
+  --secondary: #56699e;
+  --secondary-foreground: #ffffff;
+
+  --muted: #eef0f3;
+  --muted-foreground: #4b5563;
+
+  --accent: #eef2f8;
+  --accent-foreground: #2f4d88;
+
+  --destructive: #c0392b;
+  --destructive-foreground: #ffffff;
+
+  --border: #e2e5ea;
+  --input: #d3d5d8;
+  --ring: #56699e;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+    color: var(--primary);
+  }
+
+  /* Visible keyboard focus for accessibility (WCAG 2.4.7) */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--primary) 18%, transparent);
+    color: var(--primary);
+  }
+}
+
+@layer components {
+  .container-dz {
+    width: 100%;
+    margin-inline: auto;
+    max-width: 80rem; /* 1280px */
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-dz {
+      padding-inline: 2rem;
+    }
+  }
+
+  .section-y {
+    padding-block: 4.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-y {
+      padding-block: 6.5rem;
+    }
+  }
+
+  /* Subtle premium grid backdrop */
+  .bg-grid {
+    background-image: linear-gradient(
+        to right,
+        rgba(36, 59, 107, 0.04) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(36, 59, 107, 0.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .text-gradient-brand {
+    background: linear-gradient(120deg, #243b6b 0%, #4f628e 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
