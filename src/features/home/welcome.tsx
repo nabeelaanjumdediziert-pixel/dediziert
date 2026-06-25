@@ -1,13 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowRight,
-  Eye,
-  ShieldCheck,
-  Sparkles,
-  Handshake,
-  Quote,
-} from "lucide-react";
+import { ArrowRight, Eye, ShieldCheck, Handshake, Quote } from "lucide-react";
 
 import { Reveal, Stagger, RevealItem } from "@/components/shared/reveal";
 import { Button } from "@/components/ui/button";
@@ -22,7 +15,6 @@ const paragraphs = [
 const highlights = [
   { icon: Eye, label: "Transparency & Honesty" },
   { icon: ShieldCheck, label: "Integrity & Compliance" },
-  { icon: Sparkles, label: "AI-Powered Workflows" },
   { icon: Handshake, label: "Long-Term Partnership" },
 ];
 

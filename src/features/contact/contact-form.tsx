@@ -3,9 +3,8 @@
 import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { motion } from "framer-motion";
-import { Send, CheckCircle2, Loader2 } from "lucide-react";
+import { Send, CheckCircle2, Loader2, AlertCircle } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -20,24 +19,11 @@ import {
 } from "@/components/ui/select";
 import { services } from "@/constants/services";
 import { fadeUp } from "@/lib/motion";
-
-const contactSchema = z.object({
-  name: z.string().min(2, "Please enter your full name."),
-  email: z.string().email("Please enter a valid email address."),
-  phone: z
-    .string()
-    .min(7, "Please enter a valid phone number.")
-    .optional()
-    .or(z.literal("")),
-  company: z.string().optional().or(z.literal("")),
-  service: z.string().min(1, "Please select a service."),
-  message: z.string().min(10, "Please tell us a little more (10+ characters)."),
-});
-
-type ContactValues = z.infer<typeof contactSchema>;
+import { contactSchema, type ContactValues } from "./schema";
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const {
     register,
@@ -58,12 +44,28 @@ export function ContactForm() {
   });
 
   const onSubmit = async (data: ContactValues) => {
-    // Simulated submit — no backend wired up. Replace with a Route Handler
-    // or email provider to send for real.
-    await new Promise((resolve) => setTimeout(resolve, 1200));
-    console.info("Contact form submission:", data);
-    reset();
-    setSubmitted(true);
+    setSubmitError(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) {
+        const json = (await res.json().catch(() => null)) as {
+          error?: string;
+        } | null;
+        throw new Error(json?.error ?? "Something went wrong.");
+      }
+      reset();
+      setSubmitted(true);
+    } catch (err) {
+      setSubmitError(
+        err instanceof Error
+          ? err.message
+          : "Could not send your message. Please try again.",
+      );
+    }
   };
 
   if (submitted) {
@@ -183,6 +185,16 @@ export function ContactForm() {
           />
         </Field>
       </div>
+
+      {submitError && (
+        <p
+          className="mt-5 flex items-start gap-2 rounded-lg border border-destructive/30 bg-destructive/5 px-4 py-3 text-sm font-medium text-destructive"
+          role="alert"
+        >
+          <AlertCircle className="mt-0.5 size-4 shrink-0" />
+          {submitError}
+        </p>
+      )}
 
       <Button
         type="submit"

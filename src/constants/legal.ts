@@ -102,7 +102,7 @@ export const privacyPolicy: LegalSection[] = [
     paragraphs: [
       "If you have any questions about this Privacy Policy, you can contact DEDIZIERT using the details below.",
     ],
-    list: ["Email: hello@dediziert.com", "Phone: +92 334 565 6329"],
+    list: ["Email: contact@dediziert.com", "Phone: +92 334 565 6329"],
   },
 ];
 
@@ -190,6 +190,6 @@ export const termsConditions: LegalSection[] = [
     paragraphs: [
       "If you have any questions about these Terms & Conditions, you can contact DEDIZIERT using the details below.",
     ],
-    list: ["Email: hello@dediziert.com", "Phone: +92 334 565 6329"],
+    list: ["Email: contact@dediziert.com", "Phone: +92 334 565 6329"],
   },
 ];

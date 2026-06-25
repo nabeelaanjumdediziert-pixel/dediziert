@@ -11,7 +11,7 @@ export const siteConfig = {
   // depending on a generated route. Swap for a branded asset before launch.
   ogImage:
     "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&h=630&q=80",
-  email: "hello@dediziert.com",
+  email: "contact@dediziert.com",
   // International format so clients can call/WhatsApp from anywhere
   phone: "+92 334 565 6329",
   phoneHref: "tel:+923345656329",
