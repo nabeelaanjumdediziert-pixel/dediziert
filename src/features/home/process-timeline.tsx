@@ -10,6 +10,7 @@ import {
 
 import { SectionHeading } from "@/components/shared/section-heading";
 import { processSteps } from "@/constants/home";
+import { cn } from "@/lib/utils";
 
 const stepIcons: LucideIcon[] = [
   MessagesSquare,
@@ -20,9 +21,9 @@ const stepIcons: LucideIcon[] = [
   LifeBuoy,
 ];
 
-export function ProcessTimeline() {
+export function ProcessTimeline({ className = "bg-white" }: { className?: string } = {}) {
   return (
-    <section className="section-y bg-white">
+    <section className={cn("section-y", className)}>
       <div className="container-dz">
         <SectionHeading
           eyebrow="Our Process"

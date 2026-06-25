@@ -7,6 +7,7 @@ import { Reveal, Stagger, RevealItem } from "@/components/shared/reveal";
 import { FaqAccordion } from "@/components/shared/faq-accordion";
 import { Button } from "@/components/ui/button";
 import { ServiceCard } from "./service-card";
+import { ProcessTimeline } from "@/features/home/process-timeline";
 import { services } from "@/constants/services";
 import type { Service } from "@/types";
 
@@ -79,34 +80,8 @@ export function ServiceDetail({ service }: { service: Service }) {
         </div>
       </section>
 
-      {/* Process */}
-      <section className="section-y">
-        <div className="container-dz">
-          <SectionHeading
-            eyebrow="How It Works"
-            title="Our Process"
-            description="A clear, structured approach from first conversation to ongoing support."
-          />
-          <Stagger className="mt-12 grid gap-6 md:grid-cols-3 lg:grid-cols-5">
-            {service.process.map((step) => (
-              <RevealItem
-                key={step.step}
-                className="relative rounded-2xl border border-border bg-white p-6 shadow-soft"
-              >
-                <span className="font-heading text-4xl font-extrabold text-primary-100">
-                  0{step.step}
-                </span>
-                <h3 className="mt-2 text-base font-semibold text-primary">
-                  {step.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {step.description}
-                </p>
-              </RevealItem>
-            ))}
-          </Stagger>
-        </div>
-      </section>
+      {/* Process (shared with the home page) */}
+      <ProcessTimeline className="bg-background" />
 
       {/* FAQs */}
       <section className="section-y bg-white">
