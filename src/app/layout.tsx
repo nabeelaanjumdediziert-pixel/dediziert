@@ -27,7 +27,7 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — ${siteConfig.tagline}`,
+    default: "DEDIZIERT — Accounting, Tax, Audit & Advisory Services",
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -51,15 +51,17 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: `${siteConfig.name} — ${siteConfig.tagline}`,
+    title: siteConfig.tagline,
     description: siteConfig.description,
-    images: [{ url: siteConfig.ogImage, width: 1200, height: 630 }],
+    // Social image comes from the generated app/opengraph-image.tsx
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} — ${siteConfig.tagline}`,
+    site: "@dediziert",
+    creator: "@dediziert",
+    title: siteConfig.tagline,
     description: siteConfig.description,
-    images: [siteConfig.ogImage],
+    // Social image comes from the generated app/twitter-image.tsx
   },
   robots: {
     index: true,

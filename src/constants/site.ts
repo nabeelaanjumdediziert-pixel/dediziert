@@ -3,9 +3,9 @@ import type { NavItem } from "@/types";
 export const siteConfig = {
   name: "DEDIZIERT",
   legalName: "DEDIZIERT Advisory LLP",
-  tagline: "Dedicated to Accuracy. Committed to Growth.",
+  tagline: "Honest. Committed. That’s DEDIZIERT.",
   description:
-    "DEDIZIERT delivers premium accounting, audit, tax and advisory services that help startups, SMEs and corporates scale with financial clarity and confidence.",
+    "DEDIZIERT delivers accounting, audit, tax and advisory services that help startups, SMEs and corporates scale with financial clarity and confidence.",
   url: "https://www.dediziert.com",
   // Absolute URL so it works as an OG/Twitter card and in JSON-LD without
   // depending on a generated route. Swap for a branded asset before launch.

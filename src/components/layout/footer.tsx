@@ -35,7 +35,7 @@ export function Footer() {
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/65">
               Honest. Committed. That&rsquo;s DEDIZIERT.
               <br />
-              Premium accounting, audit, tax and advisory services for ambitious
+              Accounting, audit, tax and advisory services for ambitious
               businesses.
             </p>
             <ul className="mt-6 space-y-3 text-sm">

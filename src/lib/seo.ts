@@ -51,6 +51,28 @@ export function organizationJsonLd() {
     slogan: siteConfig.tagline,
     image: siteConfig.ogImage,
     priceRange: "$$",
+    founder: {
+      "@type": "Person",
+      name: "Nabeela Anjum",
+      jobTitle: "Founder & Managing Partner",
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: siteConfig.phone,
+      email: siteConfig.email,
+      contactType: "customer service",
+      availableLanguage: ["English", "Urdu"],
+    },
+    areaServed: ["Pakistan", "United Kingdom", "Worldwide"],
+    knowsAbout: [
+      "Accounting",
+      "Bookkeeping",
+      "Taxation",
+      "Audit & Assurance",
+      "Payroll",
+      "Business Consulting",
+      "Financial Planning",
+    ],
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
