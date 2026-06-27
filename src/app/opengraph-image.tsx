@@ -25,24 +25,24 @@ export default function OpengraphImage() {
         <div
           style={{
             display: "flex",
-            fontSize: 26,
-            letterSpacing: 6,
-            fontWeight: 700,
-            color: "#e0c89a",
+            fontSize: 118,
+            fontWeight: 800,
+            letterSpacing: -3,
           }}
         >
-          ACCOUNTING • TAXATION • AUDIT — POWERED BY AI
+          DEDIZIERT
         </div>
         <div
           style={{
             display: "flex",
-            fontSize: 118,
-            fontWeight: 800,
-            letterSpacing: -3,
-            marginTop: 28,
+            fontSize: 26,
+            letterSpacing: 6,
+            fontWeight: 700,
+            color: "#e0c89a",
+            marginTop: 24,
           }}
         >
-          DEDIZIERT
+          ACCOUNTING • TAXATION • AUDIT — POWERED BY AI
         </div>
         <div
           style={{
